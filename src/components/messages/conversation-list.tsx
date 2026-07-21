@@ -18,7 +18,7 @@ export function ConversationList({ conversations, selectedId, onSelect }: Conver
     (c) =>
       !c.isArchived &&
       (c.otherUser.name.toLowerCase().includes(search.toLowerCase()) ||
-        c.productName.toLowerCase().includes(search.toLowerCase()))
+        (c.productName || "").toLowerCase().includes(search.toLowerCase()))
   );
 
   return (

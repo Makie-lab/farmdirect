@@ -16,7 +16,18 @@ export function MessageThread({ conversation, messages }: MessageThreadProps) {
 
   const handleSend = () => {
     if (!input.trim()) return;
-    // In a real app, this would send to API
+    // Add message to local display (would send to API in production)
+    const newMsg: MockMessage = {
+      id: `msg-new-${Date.now()}`,
+      conversationId: conversation.id,
+      senderId: "user-001",
+      senderName: "You",
+      content: input.trim(),
+      type: "text",
+      isRead: true,
+      createdAt: new Date().toISOString(),
+    };
+    messages.push(newMsg);
     setInput("");
   };
 

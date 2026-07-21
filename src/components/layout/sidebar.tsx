@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { UserButton } from "@clerk/nextjs";
 import { cn } from "@/lib/utils";
-import { Sprout, LayoutDashboard, ShoppingBag, MessageSquare, Handshake, BarChart3, Truck, Package, MapPin, Menu, X } from "lucide-react";
+import { Sprout, LayoutDashboard, ShoppingBag, MessageSquare, Handshake, BarChart3, Truck, Package, User, Menu, X } from "lucide-react";
 import { useState } from "react";
 
 interface NavItem { label: string; href: string; icon: React.ReactNode; }
@@ -17,6 +17,7 @@ const farmerNavItems: NavItem[] = [
   { label: "Deals", href: "/dashboard/deals", icon: <Handshake className="w-5 h-5" /> },
   { label: "Analytics", href: "/dashboard/analytics", icon: <BarChart3 className="w-5 h-5" /> },
   { label: "Courier", href: "/dashboard/courier", icon: <Truck className="w-5 h-5" /> },
+  { label: "My Profile", href: "/dashboard/profile", icon: <User className="w-5 h-5" /> },
 ];
 
 const buyerNavItems: NavItem[] = [
@@ -51,7 +52,7 @@ export function Sidebar({ userRole, userName }: SidebarProps) {
         </div>
         <nav className="flex-1 px-3 py-4 space-y-1 overflow-y-auto">
           {navItems.map((item) => {
-            const isActive = pathname === item.href || (item.href !== "/dashboard" && pathname.startsWith(item.href));
+            const isActive = pathname === item.href || (item.href !== "/dashboard" && item.href !== "/marketplace" && pathname.startsWith(item.href));
             return (
               <Link key={item.href} href={item.href} onClick={() => setIsMobileOpen(false)} className={cn("flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors", isActive ? "bg-green-50 text-green-700 border border-green-100" : "text-gray-600 hover:bg-gray-50 hover:text-gray-900")}>
                 {item.icon}
