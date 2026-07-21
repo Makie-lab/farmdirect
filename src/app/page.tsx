@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useUser, UserButton } from "@clerk/nextjs";
 import { Sprout, ShieldCheck, Truck, Handshake, TrendingUp, MessageSquare, BarChart3, ArrowRight, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -26,6 +27,8 @@ const testimonials = [
 ];
 
 export default function HomePage() {
+  const { isSignedIn } = useUser();
+
   return (
     <div className="min-h-screen bg-white">
       {/* Nav */}
@@ -35,12 +38,21 @@ export default function HomePage() {
             <Sprout className="w-7 h-7 text-green-600" />
             <span className="text-xl font-bold text-gray-900">FarmDirect</span>
           </Link>
-          <div className="hidden md:flex items-center gap-6">
-            <Link href="/marketplace" className="text-sm text-gray-600 hover:text-gray-900">Marketplace</Link>
-            <Link href="/sign-in" className="text-sm text-gray-600 hover:text-gray-900">Sign In</Link>
-            <Link href="/sign-up">
-              <Button size="sm">Get Started</Button>
-            </Link>
+          <div className="flex items-center gap-4">
+            <Link href="/marketplace" className="text-sm text-gray-600 hover:text-gray-900 font-medium">Marketplace</Link>
+            {isSignedIn ? (
+              <>
+                <Link href="/dashboard" className="text-sm text-gray-600 hover:text-gray-900 font-medium">Dashboard</Link>
+                <UserButton />
+              </>
+            ) : (
+              <>
+                <Link href="/sign-in" className="text-sm text-gray-600 hover:text-gray-900">Sign In</Link>
+                <Link href="/sign-up">
+                  <Button size="sm">Get Started</Button>
+                </Link>
+              </>
+            )}
           </div>
         </div>
       </nav>
@@ -59,9 +71,15 @@ export default function HomePage() {
             <Link href="/marketplace">
               <Button size="lg">Browse Marketplace <ArrowRight className="w-4 h-4 ml-2" /></Button>
             </Link>
-            <Link href="/sign-up">
-              <Button variant="outline" size="lg">Join as Farmer</Button>
-            </Link>
+            {isSignedIn ? (
+              <Link href="/dashboard">
+                <Button variant="outline" size="lg">Go to Dashboard</Button>
+              </Link>
+            ) : (
+              <Link href="/sign-up">
+                <Button variant="outline" size="lg">Join as Farmer</Button>
+              </Link>
+            )}
           </div>
         </div>
       </section>
@@ -145,9 +163,11 @@ export default function HomePage() {
           <h2 className="text-3xl font-bold text-white mb-4">Ready to Get Started?</h2>
           <p className="text-green-100 mb-8 text-lg">Join thousands of farmers and buyers building a more sustainable food system.</p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link href="/sign-up">
-              <Button size="lg" className="bg-white text-green-700 hover:bg-green-50">Create Account</Button>
-            </Link>
+            {!isSignedIn && (
+              <Link href="/sign-up">
+                <Button size="lg" className="bg-white text-green-700 hover:bg-green-50">Create Account</Button>
+              </Link>
+            )}
             <Link href="/marketplace">
               <Button variant="outline" size="lg" className="border-white text-white hover:bg-white/10">Browse Products</Button>
             </Link>
@@ -163,7 +183,7 @@ export default function HomePage() {
               <Sprout className="w-6 h-6 text-green-500" />
               <span className="text-lg font-bold text-white">FarmDirect</span>
             </div>
-            <p className="text-sm">&copy; 2024 FarmDirect. All rights reserved.</p>
+            <p className="text-sm">&copy; 2026 FarmDirect. All rights reserved.</p>
           </div>
         </div>
       </footer>

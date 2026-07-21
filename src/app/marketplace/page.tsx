@@ -2,10 +2,10 @@
 
 import { useState, useMemo } from "react";
 import Link from "next/link";
-import { Sprout, ArrowLeft } from "lucide-react";
 import { mockProducts } from "@/lib/mock-data/products";
 import { ProductCard } from "@/components/marketplace/product-card";
 import { SearchFilters } from "@/components/marketplace/search-filters";
+import { MarketplaceHeader } from "@/components/layout/marketplace-header";
 
 export default function MarketplacePage() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -57,31 +57,10 @@ export default function MarketplacePage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <header className="bg-white border-b border-gray-100 sticky top-0 z-40">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
-          <div className="flex items-center gap-4">
-            <Link href="/" className="flex items-center gap-2">
-              <Sprout className="w-7 h-7 text-green-600" />
-              <span className="text-xl font-bold text-gray-900">FarmDirect</span>
-            </Link>
-          </div>
-          <div className="flex items-center gap-4">
-            <Link href="/dashboard" className="text-sm text-gray-600 hover:text-gray-900">
-              Dashboard
-            </Link>
-            <Link href="/sign-in" className="text-sm text-gray-600 hover:text-gray-900">
-              Sign In
-            </Link>
-          </div>
-        </div>
-      </header>
+      <MarketplaceHeader />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="mb-6">
-          <Link href="/" className="inline-flex items-center gap-1 text-sm text-gray-500 hover:text-gray-700 mb-4">
-            <ArrowLeft className="w-4 h-4" /> Back to Home
-          </Link>
           <h1 className="text-2xl font-bold text-gray-900">Marketplace</h1>
           <p className="text-gray-600 mt-1">Fresh produce directly from Filipino farmers</p>
         </div>

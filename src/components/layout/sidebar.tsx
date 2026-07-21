@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { UserButton } from "@clerk/nextjs";
 import { cn } from "@/lib/utils";
-import { Sprout, LayoutDashboard, ShoppingBag, MessageSquare, Handshake, BarChart3, Truck, Package, Settings, Menu, X } from "lucide-react";
+import { Sprout, LayoutDashboard, ShoppingBag, MessageSquare, Handshake, BarChart3, Truck, Package, MapPin, Menu, X } from "lucide-react";
 import { useState } from "react";
 
 interface NavItem { label: string; href: string; icon: React.ReactNode; }
@@ -17,18 +17,13 @@ const farmerNavItems: NavItem[] = [
   { label: "Deals", href: "/dashboard/deals", icon: <Handshake className="w-5 h-5" /> },
   { label: "Analytics", href: "/dashboard/analytics", icon: <BarChart3 className="w-5 h-5" /> },
   { label: "Courier", href: "/dashboard/courier", icon: <Truck className="w-5 h-5" /> },
-  { label: "Settings", href: "/dashboard/settings", icon: <Settings className="w-5 h-5" /> },
 ];
 
 const buyerNavItems: NavItem[] = [
-  { label: "Dashboard", href: "/dashboard", icon: <LayoutDashboard className="w-5 h-5" /> },
   { label: "Marketplace", href: "/marketplace", icon: <ShoppingBag className="w-5 h-5" /> },
   { label: "Messages", href: "/dashboard/messages", icon: <MessageSquare className="w-5 h-5" /> },
-  { label: "My Deals", href: "/dashboard/deals", icon: <Handshake className="w-5 h-5" /> },
-  { label: "My Orders", href: "/dashboard/orders", icon: <Package className="w-5 h-5" /> },
+  { label: "Deals", href: "/dashboard/deals", icon: <Handshake className="w-5 h-5" /> },
   { label: "Courier", href: "/dashboard/courier", icon: <Truck className="w-5 h-5" /> },
-  { label: "Analytics", href: "/dashboard/analytics", icon: <BarChart3 className="w-5 h-5" /> },
-  { label: "Settings", href: "/dashboard/settings", icon: <Settings className="w-5 h-5" /> },
 ];
 
 interface SidebarProps { userRole: "farmer" | "buyer"; userName: string; }
@@ -46,7 +41,7 @@ export function Sidebar({ userRole, userName }: SidebarProps) {
       {isMobileOpen && <div className="lg:hidden fixed inset-0 bg-black/50 z-40" onClick={() => setIsMobileOpen(false)} />}
       <aside className={cn("fixed left-0 top-0 h-full w-64 bg-white border-r border-gray-200 flex flex-col z-50 transition-transform lg:translate-x-0", isMobileOpen ? "translate-x-0" : "-translate-x-full")}>
         <div className="flex items-center justify-between px-6 py-5 border-b border-gray-100">
-          <Link href="/dashboard" className="flex items-center gap-2">
+          <Link href="/marketplace" className="flex items-center gap-2">
             <Sprout className="w-7 h-7 text-green-600" />
             <span className="text-xl font-bold text-gray-900">FarmDirect</span>
           </Link>

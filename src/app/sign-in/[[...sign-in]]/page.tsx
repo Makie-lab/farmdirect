@@ -45,7 +45,7 @@ export default function SignInPage() {
             <span className="text-xl font-bold text-gray-900">FarmDirect</span>
           </div>
           <SignIn
-            forceRedirectUrl="/dashboard"
+            forceRedirectUrl="/marketplace"
             appearance={{
               elements: {
                 formButtonPrimary: "bg-green-600 hover:bg-green-700",
