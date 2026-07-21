@@ -47,6 +47,7 @@ export default function SignUpPage() {
             <span className="text-xl font-bold text-gray-900">FarmDirect</span>
           </div>
           <SignUp
+            forceRedirectUrl="/onboarding"
             appearance={{
               elements: {
                 formButtonPrimary: "bg-green-600 hover:bg-green-700",
