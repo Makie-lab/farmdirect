@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useUser, UserButton } from "@clerk/nextjs";
-import { Sprout, ShoppingBag } from "lucide-react";
+import { Sprout, ShoppingBag, Camera } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export function MarketplaceHeader() {
@@ -19,6 +19,10 @@ export function MarketplaceHeader() {
           <Link href="/marketplace" className="hidden sm:flex items-center gap-1.5 text-sm font-medium text-green-700 bg-green-50 px-3 py-1.5 rounded-lg">
             <ShoppingBag className="w-4 h-4" />
             Marketplace
+          </Link>
+          <Link href="/snapshot" className="hidden sm:flex items-center gap-1.5 text-sm font-medium text-yellow-700 bg-yellow-50 px-3 py-1.5 rounded-lg">
+            <Camera className="w-4 h-4" />
+            SnapShot
           </Link>
         </div>
 

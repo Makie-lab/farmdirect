@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { UserButton } from "@clerk/nextjs";
 import { cn } from "@/lib/utils";
-import { Sprout, LayoutDashboard, ShoppingBag, MessageSquare, Handshake, BarChart3, Truck, Package, User, Menu, X } from "lucide-react";
+import { Sprout, LayoutDashboard, ShoppingBag, MessageSquare, Handshake, BarChart3, Truck, Package, User, Camera, Menu, X } from "lucide-react";
 import { useState } from "react";
 
 interface NavItem { label: string; href: string; icon: React.ReactNode; }
@@ -22,6 +22,7 @@ const farmerNavItems: NavItem[] = [
 
 const buyerNavItems: NavItem[] = [
   { label: "Marketplace", href: "/marketplace", icon: <ShoppingBag className="w-5 h-5" /> },
+  { label: "SnapShot", href: "/snapshot", icon: <Camera className="w-5 h-5" /> },
   { label: "Messages", href: "/dashboard/messages", icon: <MessageSquare className="w-5 h-5" /> },
   { label: "Deals", href: "/dashboard/deals", icon: <Handshake className="w-5 h-5" /> },
   { label: "Courier", href: "/dashboard/courier", icon: <Truck className="w-5 h-5" /> },
